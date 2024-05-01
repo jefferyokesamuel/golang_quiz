@@ -24,14 +24,17 @@ func main() {
 
 	q1 := wmenu.NewMenu("What's the capital of Germany?")
 	q1.Action(func (opts []wmenu.Opt) error {
-		fmt.Printf("You picked: " + opts[0].Text + "\n")
+		fmt.Printf("Your answer " + opts[0].Text + "has been locked in\n")
 		if opts[0].Text == "Berlin" {
 			right = right + 1
 		}
 		return nil
 	})
 	q1.Option("Berlin", nil, false, nil)
-	q1.Option("Amsterdam", nil, false, nil)
+	q1.Option("Amsterdam", nil, false, func(wmenu.Opt) error {
+		fmt.Println("You can't be serious")
+		return nil
+	})
 	q1.Option("Munich", nil, false, nil )
 	err := q1.Run()
 	if err != nil {
@@ -41,7 +44,7 @@ func main() {
 
 	q2 := wmenu.NewMenu("What's the first Cryptocurrency?")
 	q2.Action(func (opts []wmenu.Opt) error {
-		fmt.Printf("You sure it's " + opts[0].Text + "?\n")
+		fmt.Printf("Your answer " + opts[0].Text + "has been locked in\n")
 		if opts[0].Text == "Bitcoin" {
 			right = right + 1
 		}
