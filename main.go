@@ -22,40 +22,34 @@ func main() {
 	})
 	Box.Print("Welcome🔥🚀", "This is a Golang Quiz project get ready to answer some trivia")
 
-	q1 := wmenu.NewMenu("What is your favorite food?")
+	q1 := wmenu.NewMenu("What's the capital of Germany?")
 	q1.Action(func (opts []wmenu.Opt) error {
-		fmt.Printf(opts[0].Text + " is your favorite food.\n")
-		if opts[0].Text == "Pizza" {
+		fmt.Printf("You picked: " + opts[0].Text + "\n")
+		if opts[0].Text == "Berlin" {
 			right = right + 1
 		}
 		return nil
 	})
-	q1.Option("Pizza", nil, true, nil)
-	q1.Option("Ice Cream", nil, false, nil)
-	q1.Option("Tacos", nil, false, func(opt wmenu.Opt) error {
-		fmt.Printf("Tacos are great")
-		return nil
-	})
+	q1.Option("Berlin", nil, false, nil)
+	q1.Option("Amsterdam", nil, false, nil)
+	q1.Option("Munich", nil, false, nil )
 	err := q1.Run()
 	if err != nil {
 		log.Fatal(err)
 	}
 
 
-	q2 := wmenu.NewMenu("What is your favorite food?")
+	q2 := wmenu.NewMenu("What's the first Cryptocurrency?")
 	q2.Action(func (opts []wmenu.Opt) error {
-		fmt.Printf(opts[0].Text + " is your favorite food.\n")
-		if opts[0].Text == "Pizza" {
+		fmt.Printf("You sure it's " + opts[0].Text + "?\n")
+		if opts[0].Text == "Bitcoin" {
 			right = right + 1
 		}
 		return nil
 	})
-	q2.Option("Pizza", nil, true, nil)
-	q2.Option("Ice Cream", nil, false, nil)
-	q2.Option("Tacos", nil, false, func(opt wmenu.Opt) error {
-	  fmt.Printf("Tacos are great")
-	  return nil
-	})
+	q2.Option("Bitcoin", nil, true, nil)
+	q2.Option("Ethereum", nil, false, nil)
+	q2.Option("Atom", nil, false, nil)
 	err2 := q2.Run()
 	if err2 != nil{
 	  log.Fatal(err)
